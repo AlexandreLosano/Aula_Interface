@@ -8,12 +8,12 @@ public class ServicoDeAlugel {
 	private Double precoPorDia;
 	private Double precoPorHora;
 	
-	private TaxaBrasileiraDeServico taxaBrasileiraDeServico;
+	private TaxaDeServico taxaDeServico;
 
-	public ServicoDeAlugel(Double precoPorDia, Double precoPorHora, TaxaBrasileiraDeServico taxaBrasileiraDeServico) {
+	public ServicoDeAlugel(Double precoPorDia, Double precoPorHora, TaxaDeServico taxaDeServico) {
 		this.precoPorDia = precoPorDia;
 		this.precoPorHora = precoPorHora;
-		this.taxaBrasileiraDeServico = taxaBrasileiraDeServico;
+		this.taxaDeServico = taxaDeServico;
 	}
 	
 	public void procesoDeNota(AlugelDeCarro alugelDeCarro) {
@@ -29,7 +29,7 @@ public class ServicoDeAlugel {
 			valorBasico = Math.ceil(horas/24) * precoPorDia;
 		}
 	
-		double taxa = taxaBrasileiraDeServico.taxa(valorBasico);
+		double taxa = taxaDeServico.taxa(valorBasico);
 		
 		alugelDeCarro.setNotaDeServiço(new NotaDeServico(valorBasico, taxa));
 		
